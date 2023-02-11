@@ -1,8 +1,8 @@
+from envs.gridworld import GridWorld
 
+g = GridWorld()
 
-def print_hi(name):
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-if __name__ == '__main__':
-    print_hi('PyCharm')
+for i in range(25):
+    g.current_cell = i
+    print(i)
+    print(g.available_actions_ids())

@@ -1,4 +1,4 @@
-from deepsingleagentenv import DeepSingleAgentEnv
+from envs.deepsingleagentenv import DeepSingleAgentEnv
 
 import math
 import numpy as np
