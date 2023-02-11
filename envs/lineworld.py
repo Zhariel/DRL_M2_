@@ -1,8 +1,10 @@
+from deepsingleagentenv import DeepSingleAgentEnv
+
 import math
 import numpy as np
 import numba
 
-class LineWorld:
+class LineWorld(DeepSingleAgentEnv):
     def __init__(self, nb_cells: int = 5):
         self.nb_cells = nb_cells
         self.current_cell = math.floor(nb_cells / 2)
