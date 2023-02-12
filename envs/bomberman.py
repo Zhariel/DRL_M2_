@@ -36,6 +36,8 @@ class Bomberman:
             if self.b.P[pos, i, s_p]:
                 actions.append(i)
 
+        return np.array(actions)
+
     def reset(self):
         self.b = BombermanGame()
 
