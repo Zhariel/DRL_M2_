@@ -12,3 +12,8 @@ import random
 
 bm = Bomberman()
 bm.view()
+
+while not bm.is_game_over():
+    inp = int(input())
+    bm.act_with_action_id(inp)
+    bm.view()

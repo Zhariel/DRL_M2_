@@ -149,8 +149,10 @@ class BombermanGame:
         bomb_positions = [i.pos for i in self.bombs]
         if len(self.bombs) < 3 and self.position not in bomb_positions:
             self.bombs.append(Bomb(self.position))
+            print()
 
     def bomb_explode(self, origin):
+        self.board[origin] = 0
         for i in range(4):
             for _ in range(self.bomb_strength):
                 s_p = origin + self.a_effects[i]
@@ -161,6 +163,9 @@ class BombermanGame:
                         self.board[s_p] = 0
 
     def frame(self, player_a):
+        for b in self.bombs:
+            b.ticks -= 1
+
         if 3 not in self.board:
             self.won = -1
             return
@@ -168,15 +173,32 @@ class BombermanGame:
             self.won = 1
             return
 
+        for b in range(len(self.bombs)-1, -1, -1):
+            if self.bombs[b].ticks == 0:
+                self.bomb_explode(origin=self.bombs[b].pos)
+                self.bombs.pop(b)
+
         if player_a == 4:
             self.place_bomb()
+
         else:  # move player
+            old_pos = self.position
             s_p = self.position + self.a_effects[player_a]
             if self.P[self.position, player_a, s_p] == 1:
                 if self.board[s_p] == 6:
                     self.won = -1
-                if self.board[s_p] == 0:
+                    return
+                if self.board[s_p] == 0 or self.board[s_p] == 5:
+                    if self.board[s_p] == 5:
+                        self.bomb_strength += 1
+                    self.board[self.position] = 0
                     self.position = s_p
+                    self.board[s_p] = 3
+                    for b in self.bombs:
+                        if b.pos == old_pos:
+                            self.board[old_pos] = 4
+            else:
+                print("CANT MOVE")
 
         if self.step % 4 == 0:  # move ennemy
             for e in self.board:
