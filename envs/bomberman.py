@@ -2,6 +2,7 @@ import random
 import itertools
 import numpy as np
 from typing import List
+from deepsingleagentenv import DeepSingleAgentEnv
 
 
 class Bomberman:
@@ -51,7 +52,7 @@ class Bomb:
         self.ticks = 3
 
 
-class BombermanGame:
+class BombermanGame(DeepSingleAgentEnv):
     def __init__(self, size=5):
         self.game_size = 5 if size < 5 else size
         # breakable_or_air = 0 if random.random() < 0.95 else 3
