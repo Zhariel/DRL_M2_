@@ -5,7 +5,7 @@ from typing import List
 from envs.deepsingleagentenv import DeepSingleAgentEnv
 
 
-class Bomberman:
+class Bomberman(DeepSingleAgentEnv):
     def __init__(self):
         self.b = BombermanGame()
 
@@ -52,7 +52,7 @@ class Bomb:
         self.ticks = 3
 
 
-class BombermanGame(DeepSingleAgentEnv):
+class BombermanGame:
     def __init__(self, size=5):
         self.game_size = 5 if size < 5 else size
         # breakable_or_air = 0 if random.random() < 0.95 else 3

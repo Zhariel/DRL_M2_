@@ -121,7 +121,7 @@ def ppo(env: DeepSingleAgentEnv, max_iter_count: int = 10000,
 
 pi_and_v_model, scores, steps = ppo(LineWorld(5), max_iter_count=100000)
 # pi_and_v_model, scores, steps = ppo(GridWorld(), max_iter_count=100000)
-# pi_and_v_model, scores, steps = ppo(BombermanGame(), max_iter_count=100000)
+# pi_and_v_model, scores, steps = ppo(Bomberman(), max_iter_count=100000)
 print(pi_and_v_model.weights)
 plt.plot(scores)
 plt.show()
