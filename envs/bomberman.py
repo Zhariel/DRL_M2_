@@ -2,7 +2,7 @@ import random
 import itertools
 import numpy as np
 from typing import List
-from deepsingleagentenv import DeepSingleAgentEnv
+from envs.deepsingleagentenv import DeepSingleAgentEnv
 
 
 class Bomberman:
